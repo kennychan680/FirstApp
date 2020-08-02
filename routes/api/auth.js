@@ -44,7 +44,7 @@ router.post(
       if (!user) {
         return res
           .status(400)
-          .json({ errors: [{ msg: 'invalid credentials' }] });
+          .json({ errors: [{ msg: 'invalid credentials (api/auth/)' }] });
       }
 
       // compare the password entered with the encrypted password
@@ -55,7 +55,7 @@ router.post(
       if (!isMatch) {
         return res
           .status(400)
-          .json({ errors: [{ msg: 'invalid credentials x' }] });
+          .json({ errors: [{ msg: 'invalid credentials (api/auth/x)' }] });
       }
 
       // Retrun jsonwebtoken
