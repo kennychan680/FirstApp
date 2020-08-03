@@ -19,13 +19,13 @@ router.get('/me', auth, async (req, res) => {
 
     if (!profile) {
       return res.status(400).json({
-        msg: 'there is no profile for this user - routes/api/profile.js)',
+        msg: 'there is no profile for this user - chk user profile)',
       });
     }
 
     res.json(profile);
   } catch (err) {
-    res.status(500).send('Server Error - routes/api/profiles.js');
+    res.status(500).send('Server Error - chk user profile');
   }
 });
 
@@ -108,7 +108,7 @@ router.post(
       res.json(profile);
     } catch (err) {
       console.error(err.message);
-      res.status(500).send('server Error - routes-api-profile.js');
+      res.status(500).send('Server Error - Crt/Upd user profile');
     }
 
     //--------------
@@ -124,7 +124,7 @@ router.get('/', async (req, res) => {
     res.json(profiles);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server Error - Get');
+    res.status(500).send('Server Error - Get all profile');
   }
 });
 
@@ -139,17 +139,17 @@ router.get('/user/:user_id', async (req, res) => {
 
     if (!profiles)
       return res.status(400).json({
-        msg: 'Profile not found - routes/api-prifile',
+        msg: 'Profile not found - Get 1 profile',
       });
     res.json(profiles);
   } catch (err) {
     console.error(err.message);
     if (err.kind == 'ObjectId') {
       return res.status(400).json({
-        msg: 'Profile not found 2 - routes/api-prifile',
+        msg: 'Profile not found - Get 1 profile (Obj ID)',
       });
     }
-    res.status(500).send('Server Error - Get user ID');
+    res.status(500).send('Server Error - Get 1 profile');
   }
 });
 
@@ -168,7 +168,7 @@ router.delete('/', auth, async (req, res) => {
     res.json({ msg: 'User deleted' });
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server Error - delete routes/api/profile.js');
+    res.status(500).send('Server Error - delete profile');
   }
 });
 
@@ -227,7 +227,7 @@ router.put(
       res.json(profile);
     } catch (err) {
       console.error(err.message);
-      res.status(500).send('Server Error - Put experience');
+      res.status(500).send('Server Error - Add (put) experience');
     }
   }
 );
@@ -307,7 +307,7 @@ router.put(
       res.json(profile);
     } catch (err) {
       console.error(err.message);
-      res.status(500).send('Server Error');
+      res.status(500).send('Server Error - Add (put) Education');
     }
   }
 );

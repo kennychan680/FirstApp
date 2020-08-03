@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// all profer refer to user
 const ProfileSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
