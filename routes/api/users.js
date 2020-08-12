@@ -31,6 +31,7 @@ router.post(
     try {
       // see if user exists
       let user = await User.findOne({ email });
+      console.log('inside Try api/user.js');
       if (user) {
         return res
           .status(400)
