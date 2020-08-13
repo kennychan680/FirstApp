@@ -26,6 +26,8 @@ export const loadUser = () => async (dispatch) => {
       type: USER_LOADED,
       payload: res.data,
     });
+
+    
   } catch (err) {
     dispatch({
       type: AUTH_ERROR,
@@ -52,6 +54,7 @@ export const register = ({ name, email, password }) => async (dispatch) => {
     });
 
     dispatch(loadUser());
+    
   } catch (err) {
     const errors = err.response.data.errors;
 
@@ -82,6 +85,8 @@ export const login = ({ email, password }) => async (dispatch) => {
       type: LOGIN_SUCCESS,
       payload: res.data,
     });
+
+    dispatch(loadUser());
   } catch (err) {
     const errors = err.response.data.errors;
 
