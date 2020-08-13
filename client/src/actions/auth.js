@@ -1,4 +1,3 @@
-
 import { setAlert } from './alert';
 import axios from 'axios';
 import {
@@ -18,11 +17,11 @@ export const loadUser = () => async (dispatch) => {
     setAuthToken(localStorage.token);
   }
 
-  console.log ("before try");
+  console.log('before try');
   try {
-    console.log ("inside 1");
+    console.log('inside 1');
     const res = await axios.get('/api/auth');
-    console.log ("inside 2");
+    console.log('inside 2');
     dispatch({
       type: USER_LOADED,
       payload: res.data,
@@ -43,7 +42,6 @@ export const register = ({ name, email, password }) => async (dispatch) => {
   };
 
   const body = JSON.stringify({ name, email, password });
-  
 
   try {
     const res = await axios.post('/api/users', body, config);
@@ -52,16 +50,17 @@ export const register = ({ name, email, password }) => async (dispatch) => {
       type: REGISTER_SUCCESS,
       payload: res.data,
     });
+
+    dispatch(loadUser());
   } catch (err) {
     const errors = err.response.data.errors;
 
     if (errors) {
       errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
     }
-    console.log("failxx");
+    console.log('failxx');
     dispatch({
       type: REGISTER_FAIL,
-      
     });
   }
 };
