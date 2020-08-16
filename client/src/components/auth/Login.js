@@ -4,24 +4,22 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/auth';
 
-const Login = ({ Login, isAuthenticated }) => {
+const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
 
   const { email, password } = formData;
-  // use name as the key, target value can be name, email , pwd
+
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  // preventDefault = when click "Submit" btn, prevent it from submitting the form
-  const onSubmit = async (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
-    console.log('success');
+    login(email, password);
   };
 
-  // redirect if logged in
   if (isAuthenticated) {
     return <Redirect to='/dashboard' />;
   }
@@ -30,16 +28,16 @@ const Login = ({ Login, isAuthenticated }) => {
     <Fragment>
       <h1 className='large text-primary'>Sign In</h1>
       <p className='lead'>
-        <i className='fas fa-user'></i> Sign Into Your Account
+        <i className='fas fa-user' /> Sign Into Your Account
       </p>
-      <form className='form' onSubmit={(e) => onSubmit(e)}>
+      <form className='form' onSubmit={onSubmit}>
         <div className='form-group'>
           <input
             type='email'
             placeholder='Email Address'
             name='email'
             value={email}
-            onChange={(e) => onChange(e)}
+            onChange={onChange}
             required
           />
         </div>
@@ -49,7 +47,7 @@ const Login = ({ Login, isAuthenticated }) => {
             placeholder='Password'
             name='password'
             value={password}
-            onChange={(e) => onChange(e)}
+            onChange={onChange}
             minLength='6'
           />
         </div>
