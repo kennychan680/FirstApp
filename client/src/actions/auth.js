@@ -65,9 +65,6 @@ export const register = ({ name, email, password }) => async (dispatch) => {
 
 // Login User
 
-// 16/Aug (original code; msg from Mr Will 'There is nothing to destructure here, so if you try and destructure then both email and password will be undefined'.)
-// export const login = ({ email, password }) => async (dispatch) => {
-
 export const login = (email, password) => async (dispatch) => {
   const config = {
     headers: {
@@ -75,7 +72,6 @@ export const login = (email, password) => async (dispatch) => {
     },
   };
 
-  // 16 Aug  (original code) const body = JSON.stringify(email, password);
   const body = JSON.stringify({ email, password });
 
   try {
