@@ -11,7 +11,7 @@ const { check, validationResult } = require('express-validator');
 // @desc    Test route
 // @access  Public
 router.get('/', auth, async (req, res) => {
-  console.log("test error authjs row 14")
+  
   try {
     const user = await User.findById(req.user.id).select('-password');
     res.json(user);

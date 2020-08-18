@@ -12,6 +12,7 @@ const User = require('../../models/User');
 // @desc    get current users profile
 // @access  Private
 router.get('/me', auth, async (req, res) => {
+  console.log('/me');
   try {
     const profile = await (
       await Profile.findOne({ user: req.user.id })
