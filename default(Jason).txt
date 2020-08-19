@@ -1,3 +1,5 @@
+this is default.jason in Config folder
+
 {
   "mongoURI": "mongodb+srv://kenny123:kenny123@devconnector.7nqci.mongodb.net/testDB?retryWrites=true&w=majority",
   "jwtSecret": "mysecrettoken",
