@@ -1,7 +1,12 @@
 import axios from 'axios';
 import { setAlert } from './alert';
 
-import { GET_PROFILE, PROFILE_ERROR, UPDATE_PROFILE } from './types';
+import {
+  GET_PROFILE,
+  GET_PROFILES,
+  PROFILE_ERROR,
+  UPDATE_PROFILE,
+} from './types';
 
 // Get current users profile
 
@@ -66,7 +71,7 @@ export const addExperience = (formData, history) => async (dispatch) => {
       },
     };
 
-    const res = await axios.put('/profile/experience', formData, config);
+    const res = await axios.put('/api/profile/experience', formData, config);
 
     dispatch({
       type: UPDATE_PROFILE,
@@ -99,7 +104,7 @@ export const addEducation = (formData, history) => async (dispatch) => {
       },
     };
 
-    const res = await axios.put('/profile/education', formData, config);
+    const res = await axios.put('/api/profile/education', formData, config);
 
     dispatch({
       type: UPDATE_PROFILE,
